@@ -1,10 +1,15 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Auth() {
-    const [mode, setMode] = useState('signup');
+    const [searchParams] = useSearchParams();
+    const [mode, setMode] = useState(searchParams.get('mode') || 'signup');
+
+    useEffect(() => {
+        setMode(searchParams.get('mode') || 'signup');
+    }, [searchParams]);
     const [error, setError] = useState(null);
     const {register, handleSubmit, formState:{errors}} = useForm();
     const { SignUp, LogIn } = useAuth();

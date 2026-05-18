@@ -13,8 +13,8 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-auth">
                     {!user ? <div className="navbar-auth-links">
-                        <Link to='/auth' className="btn btn-secondary">Login</Link>
-                        <Link to='/auth' className="btn btn-primary">Sign Up</Link>
+                        <Link to='/auth?mode=login' className="btn btn-secondary">Login</Link>
+                        <Link to='/auth?mode=signup' className="btn btn-primary">Sign Up</Link>
                     </div> : (
                         <div className="navbar-user">
                             <span>Hello, {user.email}</span>
